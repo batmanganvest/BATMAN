@@ -2,32 +2,74 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>бамбамбам</title>
+    <title>BATMAN WORLD</title>
     <style>
         body {
             background: black;
             color: white;
             font-family: Arial;
             margin: 0;
-            padding: 0;
+        }
+
+        .start-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+        }
+
+        .start-page img {
+            width: 80%;
+            max-width: 500px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .start-page img:hover {
+            transform: scale(1.05);
+        }
+
+        .batman-title {
+            color: #FFD700;
+            font-size: 50px;
+            margin-top: 30px;
+            letter-spacing: 5px;
+            font-weight: bold;
+        }
+
+        .comics-page {
+            display: none;
         }
 
         header {
             background: #111;
             padding: 20px;
-            text-align: center;
             border-bottom: 3px solid #FFD700;
+            position: relative;
         }
 
-        h1 {
+        .header-title {
             color: #FFD700;
-            margin: 0;
+            font-size: 40px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-align: center;
         }
 
-        .container {
-            width: 90%;
-            margin: 0 auto;
-            padding: 20px;
+        .favorites-btn {
+            background: #FFD700;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .main-photo {
@@ -47,6 +89,7 @@
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
+            padding: 20px;
         }
 
         .comic {
@@ -55,6 +98,7 @@
             border-radius: 10px;
             padding: 10px;
             text-align: center;
+            position: relative;
         }
 
         .comic img {
@@ -69,6 +113,21 @@
             margin: 10px 0;
         }
 
+        .heart-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .heart-btn.favorite {
+            color: red;
+        }
+
         footer {
             background: #111;
             text-align: center;
@@ -79,52 +138,124 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Комиксы</h1>
-        <p>Когда я выбирал этот путь, мне следовало знать, что он бесконечен. ©Batman</p>
-    </header>
-
-    <div class="container">
-        <div class="main-photo">
-            <img src="C:\Users\etaeg\Desktop\batman\batman-arkham-knight_promo-2048x1152-ed2be22b3f24f446534b90b122ed560d.jpg" alt="Бэтмен">
-        </div>
-
-        <div class="comics" id="comicsList">
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\266px-Dark_knight_returns.jpg" alt="The Dark Knight Returns">
-                <h3>The Dark Knight Returns</h3>
-                <p> Комикс Возвращение тёмного рыцаря рассказывает о Бэтмене, который возвращается из отставки в антиутопическом Готэме через десять лет после ухода на пенсию</p>
-            </div>
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\Batman_vol._1-404_(January_1987).jpg" alt="Batman: Year One">
-                <h3>Batman: Year One</h3>
-                <p> Комикс Год первый рассказывает о первом годе карьеры Бэтмена и Джеймса Гордона в Готэме</p>
-            </div>
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\Killingjoke.JPG" alt="The Killing Joke">
-                <h3>The Killing Joke</h3>
-                <p>Комикс Убийственная шутка (1988) рассказывает о попытке Джокера свести Бэтмена с ума, используя жестокие и психологически травмирующие методы</p>
-            </div>
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\Batman_608_(2002).jpg" alt="Hush">
-                <h3>Hush</h3>
-                <p>Комикс Хаш (2002) рассказывает о загадочном злодее по имени Хаш, который пытается манипулировать Бэтменом, используя его старых врагов</p>
-            </div>
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\81XJ8U4vkbL._AC_UF1000,1000_QL80_.jpg" alt="Court of Owls">
-                <h3>Court of Owls</h3>
-                <p>Комикс Суд сов (2011) рассказывает о том, как тайное общество, известное как Суд Сов, которое управляет Готэмом из тени на протяжении веков, выходит из тени и начинает действовать против Бэтмена</p>
-            </div>
-            <div class="comic">
-                <img src="C:\Users\etaeg\Desktop\batman\Batman_428.jpg" alt="Death in the Family">
-                <h3>Death in the Family</h3>
-                <p>Комикс Смерть в семье (1988) рассказывает о смерти второго Робина, Джейсона Тодда, от рук Джокера, после того как читатели проголосовали за его гибель по телефону</p>
-            </div>
-        </div>
+    <div class="start-page" id="startPage">
+        <img src="png-klev-club-5ixl-p-znak-betmena-png-18-Photoroom.png" alt="Начать" onclick="goToComics()">
+        <div class="batman-title">BATMAN WORLD</div>
     </div>
 
-    <footer>
-        <p>первая версия страницы с комиксами</p>
-    </footer>
+    <div class="comics-page" id="comicsPage">
+        <header>
+            <div class="header-title">BATMAN WORLD</div>
+            <button class="favorites-btn" onclick="showFavorites()">★ Избранное</button>
+        </header>
+
+        <div class="main-photo">
+            <img src="batman-arkham-knight_promo-2048x1152-ed2be22b3f24f446534b90b122ed560d.jpg" alt="Бэтмен">
+        </div>
+
+        <div class="comics" id="comicsList"></div>
+
+        <footer>
+            <p>УМОЛЯЮ ТРОЕЧКУ ПОЖАЛУЙСТА</p>
+        </footer>
+    </div>
+
+    <div class="comics-page" id="favoritesPage">
+        <header>
+            <div class="header-title">ИЗБРАННЫЕ КОМИКСЫ</div>
+            <button class="favorites-btn" onclick="showAllComics()">← Назад</button>
+        </header>
+
+        <div class="comics" id="favoritesList"></div>
+
+        <footer>
+            <p>ваши избранные комиксы</p>
+        </footer>
+    </div>
+
+    <script>
+        const comicsData = [
+            {id: 1, title: "The Dark Knight Returns", image: "266px-Dark_knight_returns.jpg", description: "Комикс Возвращение тёмного рыцаря рассказывает о Бэтмене, который возвращается из отставки в антиутопическом Готэме через десять лет после ухода на пенсию"},
+            {id: 2, title: "Batman: Year One", image: "Batman_vol._1-404_(January_1987).jpg", description: "Комикс Год первый рассказывает о первом годе карьеры Бэтмена и Джеймса Гордона в Готэме"},
+            {id: 3, title: "The Killing Joke", image: "Killingjoke.JPG", description: "Комикс Убийственная шутка (1988) рассказывает о попытке Джокера свести Бэтмена с ума, используя жестокие и психологически травмирующие методы"},
+            {id: 4, title: "Hush", image: "Batman_608_(2002).jpg", description: "Комикс Хаш (2002) рассказывает о загадочном злодее по имени Хаш, который пытается манипулировать Бэтменом, используя его старых врагов"},
+            {id: 5, title: "Court of Owls", image: "81XJ8U4vkbL._AC_UF1000,1000_QL80_.jpg", description: "Комикс Суд сов (2011) рассказывает о том, как тайное общество, известное как Суд Сов, которое управляет Готэмом из тени на протяжении веков, выходит из тени и начинает действовать против Бэтмена"},
+            {id: 6, title: "Death in the Family", image: "Batman_428.jpg", description: "Комикс Смерть в семье (1988) рассказывает о смерти второго Робина, Джейсона Тодда, от рук Джокера, после того как читатели проголосовали за его гибель по телефону"}
+        ];
+
+        let favorites = [];
+
+        function showAllComics() {
+            document.getElementById('comicsPage').style.display = 'block';
+            document.getElementById('favoritesPage').style.display = 'none';
+        }
+
+        function showFavorites() {
+            document.getElementById('comicsPage').style.display = 'none';
+            document.getElementById('favoritesPage').style.display = 'block';
+            displayFavorites();
+        }
+
+        function loadComics() {
+            const comicsList = document.getElementById('comicsList');
+            comicsList.innerHTML = '';
+            
+            comicsData.forEach(comic => {
+                const isFavorite = favorites.includes(comic.id);
+                comicsList.innerHTML += `
+                    <div class="comic">
+                        <button class="heart-btn ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite(${comic.id})">
+                            ${isFavorite ? '❤️' : '🤍'}
+                        </button>
+                        <img src="${comic.image}" alt="${comic.title}">
+                        <h3>${comic.title}</h3>
+                        <p>${comic.description}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function displayFavorites() {
+            const favoritesList = document.getElementById('favoritesList');
+            favoritesList.innerHTML = '';
+            
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<p style="text-align:center; width:100%; color: #FFD700;">Нет избранных комиксов</p>';
+                return;
+            }
+            
+            favorites.forEach(favId => {
+                const comic = comicsData.find(c => c.id === favId);
+                if (comic) {
+                    favoritesList.innerHTML += `
+                        <div class="comic">
+                            <button class="heart-btn favorite" onclick="toggleFavorite(${comic.id})">❤️</button>
+                            <img src="${comic.image}" alt="${comic.title}">
+                            <h3>${comic.title}</h3>
+                            <p>${comic.description}</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        function toggleFavorite(comicId) {
+            if (favorites.includes(comicId)) {
+                favorites = favorites.filter(id => id !== comicId);
+            } else {
+                favorites.push(comicId);
+            }
+            loadComics();
+            if (document.getElementById('favoritesPage').style.display === 'block') {
+                displayFavorites();
+            }
+        }
+
+        function goToComics() {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('comicsPage').style.display = 'block';
+            loadComics();
+        }
+    </script>
 </body>
 </html>
